@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "razorpay-typescript": "^1.0.12"
+  }
+}
