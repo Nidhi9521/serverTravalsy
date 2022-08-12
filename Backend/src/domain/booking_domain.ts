@@ -273,7 +273,11 @@ class BookingDomain {
         var query: any = req.query;
         var roomid: any = query.roomid.split(",").map(Number);
         var hotelid: any = query.hotelid
-        var countOfMattress = query.countOfMattress
+        var adults:any = query.adults
+        console.log("roomid",roomid.length);
+       var noOfPersonforRoom = ((roomid.length) * 2);
+       var countOfMattress:any = ((adults - noOfPersonforRoom) < 0 ) ? 0 : (adults - noOfPersonforRoom);
+       console.log("countOfMattress" ,countOfMattress);
         var getHotelRoom = await hotelmodel.find({ _id: hotelid })
         var hotelId = parseInt(getHotelRoom[0]._id.toString());
         var hotelName = getHotelRoom[0].hotel_name.toString();
