@@ -23,7 +23,8 @@ class UserDomain {
                 user_name: decodedToken.name != null ? decodedToken.name : null,
                 user_email: decodedToken.email,
                 user_phone_number: decodedToken.phone_number != null ? decodedToken.phone_number : null,
-                user_image: decodedToken.picture != null ? decodedToken.picture : null
+                user_image: decodedToken.picture != null ? decodedToken.picture : null,
+                user_type : (decodedToken.email == 'travelsyadmin@gmail.com') ? "admin" : "normal" 
             }
             var data = new Usermodel(postData);
             console.log(data);
@@ -33,6 +34,7 @@ class UserDomain {
                 res.status(StatusCode.Sucess).send("data added");
                 res.end();
             } catch (error: any) {
+                console.log(error);
                 if (error.code == 11000) {
                     console.log('errro google')
                     if (decodedToken.firebase.sign_in_provider == "google.com" || decodedToken.firebase.sign_in_provider == "facebook.com") {
@@ -45,6 +47,7 @@ class UserDomain {
                     }
                 } else {
                     console.log('error server')
+                    console.log(error)
                     res.status(StatusCode.Server_Error).send(error.message);
                     res.end();
                 }

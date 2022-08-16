@@ -250,6 +250,12 @@ class BookingDomain {
                                 "address": d.address,
                                 'images': d.images,
                                 "price": e.price?.total_price,
+                                "no_of_room": e.no_of_room,
+                                "number_of_nights":e.price?.number_of_nights,
+                                "room_price": e.price?.room_price,
+                                "discount": e.price?.discount,
+                                 "gst": e.price?.gst,
+                                 "booked_date": e.booked_date,
                                 "checking_date": e.checkin_date,
                                 "checkout_date": e.checkout_date
                             })
