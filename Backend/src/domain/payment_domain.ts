@@ -44,11 +44,14 @@ class PaymentDomain {
             if(resBooking!=0){
                 console.log(orderData);
                 res.send(orderData)
+                res.end();
                 setTimeout(bookIngDomain.bookingFreezFail, 20000, resBooking);
             }else{
                 res.status(400).send('faile');    
             }   
         } catch (error: any) {
+            console.log("hy")
+            console.log(error);
             res.status(400).send('Unable to create order');
         }
     }
@@ -67,6 +70,8 @@ class PaymentDomain {
         }
 
     }
+
+
 
     
 }
