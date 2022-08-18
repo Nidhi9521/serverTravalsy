@@ -23,8 +23,20 @@ import { router as reviewroute } from './controller/review_controller';
 import { router as bookingroute } from './controller/booking_controller';
 import { router as bookmarkroute } from './controller/bookmark_controller';
 import {router as paymentroute}  from './controller/payment_controller';
- 
+import { router as couponroute} from './controller/coupon_controller';
+import cors from "cors";
 
+const allowedOrigins = ['*'];
+const options: cors.CorsOptions = {
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH','OPTIONS'],
+    credentials: true,
+    allowedHeaders:"Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,locale",
+    exposedHeaders:"*",
+    maxAge:3600
+  };
+  // Then pass these options to cors:
+app.use(cors(options));
 // FIREBASE INTITIALIZE
 admin.initializeApp(
     {
@@ -51,6 +63,8 @@ app.use('/review', reviewroute);
 app.use('/booking', bookingroute);
 app.use('/bookmark', bookmarkroute);
 app.use('/payment',paymentroute);
+app.use('/coupon', couponroute);
+
 
 
 // LISTEN

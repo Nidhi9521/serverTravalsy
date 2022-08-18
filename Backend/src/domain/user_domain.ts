@@ -105,6 +105,28 @@ class UserDomain {
         }
     }
 
+
+    //admin check
+    async admincheck(req:Request , res: Response){
+        try {
+            
+            var reqData: any = JSON.parse(JSON.stringify(req.headers['data']));
+            var uid: string = reqData.uid;
+            console.log(uid)
+            var userData = await Usermodel.findOne({ _id: uid }).select("-__v");
+            if(userData?.user_type == "admin"){
+                res.status(StatusCode.Sucess).send("You are admin");
+                res.end();
+            }else {
+                res.status(StatusCode.Unauthorized).send("You are not authorize");
+                res.end();
+            }
+           
+        } catch (error: any) {
+            res.status(StatusCode.Server_Error).send(error.message)
+        }
+    }
+
 }
 
 //EXPORT
