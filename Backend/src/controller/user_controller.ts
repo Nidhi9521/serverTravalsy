@@ -21,6 +21,13 @@ class UserController {
         await userDomain.getUser(req, res);
     }
 
+    static async adminCheck(req: Request, res: Response) {
+        const userDomain: UserDomain = new UserDomain();
+        await userDomain.admincheck(req, res);
+    }
+
+
+
 }
 
 // POST
@@ -31,6 +38,9 @@ router.put('/', UserController.updateUser);
 
 //get
 router.get('/', UserController.getUser);
+
+//admincheck
+router.get('/admincheck', UserController.adminCheck);
 
 //EXPORT
 export { router };

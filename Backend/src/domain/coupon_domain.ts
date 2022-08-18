@@ -32,7 +32,6 @@ class CouponDomain {
             res.end();
         }
     }
-
     async getCoupon(req: Request, res: Response) {
         try {
             var today = new Date();
@@ -75,7 +74,6 @@ class CouponDomain {
             res.end();
         }
     }
-
     async getCouponListMostApplicable(req: Request, res: Response) {
         try {
             var count = 0;

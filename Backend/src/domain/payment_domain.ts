@@ -49,6 +49,8 @@ class PaymentDomain {
                 res.status(400).send('faile');    
             }   
         } catch (error: any) {
+            console.log("hy")
+            console.log(error);
             res.status(400).send('Unable to create order');
         }
     }
@@ -67,6 +69,8 @@ class PaymentDomain {
         }
 
     }
+
+
 
     
 }
